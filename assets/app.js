@@ -1,19 +1,8 @@
 //smooth scrolls
-if (window.innerWidth > 900) {
 	var scroll = new SmoothScroll('a[href*="#seller"]', {
-	 offset: -800,
    easing: 'easeInOutQuad',
    speed : 600,
 });
-}
-if (window.innerWidth < 900) {
-	var scroll = new SmoothScroll('a[href*="#seller"]', {
-	 offset: -150,
-   easing: 'easeInOutQuad',
-   speed : 600,
-
-});
-}
 
 var begin = new SmoothScroll('.header-btn', {
 	 offset: 0,
@@ -28,15 +17,25 @@ var buyers = new SmoothScroll('a[href*="#buyers"]', {
 
 });
 
+window.onload = function(){
+  let data = sessionStorage.getItem('pageLoad');
+  let btn = sessionStorage.getItem("click");
+  if (data === 'true') {
+    btn === 'start' ? document.querySelector(".header-btn").click() : btn === 'seller' ? document.querySelector(".seller").click() : document.querySelector(".buyer").click()
+    sessionStorage.clear();
+    navBtn.classList.toggle("active")
+    nav.classList.toggle("active")
+  }
+
+}
+
 
 let form = document.getElementById('mc-embedded-subscribe-form');
-let fnameError = document.querySelector('.fname-validation');
-let lnameError = document.querySelector('.fname-validation');
-
 
 
 const validation = new JustValidate('#mc-embedded-subscribe-form', {
-	  	errorFieldCssClass : 'err',errorLabelCssClass : 'err',
+	  	errorFieldCssClass : 'err',
+      errorLabelCssClass : 'err',
 
 });
 
@@ -116,11 +115,13 @@ validation
     },
   ])
   
-  document.querySelector('.formBtn').addEventListener("click", function(){
-  		if (validation.isValid) {
-  				form.submit();
 
-  		}
+
+  document.querySelector('.formBtn').addEventListener("click", function(){
+  validation.onSuccessCallback = () => {
+    form.submit();
+    sessionStorage.setItem("formSubmit", "true");
+  }
 
   })
   form.addEventListener("keypress", function(e){

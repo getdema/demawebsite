@@ -1,100 +1,8 @@
-let imgAnimationDelay = 0.8;
-
-document.querySelector(".nav-link").addEventListener("click", function(){
-	imgAnimationDelay = 0;
-	setTimeout(() => {
-		imgAnimationDelay = 0.4;
-	},1000)
-})
-gsap.registerPlugin(ScrollTrigger);
-
-
-ScrollTrigger.matchMedia({
-	
-  // large
-  "(min-width: 900px)": function() {
-const ts = gsap.timeline();
-ts.from(".seller1", {yPercent : 0,opacity: 0});
-ts.to(".seller1", { yPercent: -5, opacity: 0, delay:1});
-ts.from(".seller2", { yPercent : 100,xPercent:0, opacity:0});
-ts.to(".seller2", { yPercent: -5, opacity: 0, delay:1});
-ts.from(".seller3", { yPercent:100,opacity:0});
-ts.to(".seller3", { yPercent: -5, opacity: 0, delay:1});
-const t2 = ScrollTrigger.create({
-	animation : ts,
-	trigger : ".text",
-	start : "top top",
-	end : "bottom bottom",
-	scrub : 1,
-	pin: true,
-})
-
-
-const it = gsap.timeline();
-it.from(".s1-img-anim", {opacity: 0, delay: 0.1});
-it.to(".s1-img-anim", {opacity: 0, delay : 0.4});
-it.from(".s2-img-anim", {opacity: 0,delay: imgAnimationDelay});
-it.to(".s2-img-anim", {opacity: 0, delay: 0.4});
-it.from(".s3-img-anim", {opacity: 0,delay: imgAnimationDelay});
-it.to(".s3-img-anim", {opacity: 0,delay: 0.4});
-
-
-const t1 = ScrollTrigger.create({
-	animation : it,
-	trigger : ".text",
-	start : "top top",
-	end : "bottom bottom",
-	scrub : 1,
-	pin: true,
-})
-const tl = gsap.timeline();
-tl.from(".word", { 
-  opacity: 0,
-  x: -200,
-  stagger : 0.5,
-  duration: 0.8,
-  ease: Power3.easeOut,
-})
-
-const f = gsap.timeline();
-f.from(".fee", { 
-  opacity: 0,
-  x: -700,
-  stagger : 0.1,
-ease: Power3.easeOutIn,
-  duration: 0.8,
-})
-
-const h = gsap.timeline();
-h.from([".hero-img", ".hero-logo"], { 
-  opacity: 0,
-  x: -30,
-  stagger : 0.1,
-ease: Power3.easeOutIn,
-  duration: 0.8,
-})
-  },
-	
-}); 
 //smooth scrolls
-
-
-
-if (window.innerWidth > 900) {
 	var scroll = new SmoothScroll('a[href*="#seller"]', {
-	 offset: -800,
    easing: 'easeInOutQuad',
    speed : 600,
 });
-}
-if (window.innerWidth < 900) {
-	var scroll = new SmoothScroll('a[href*="#seller"]', {
-	 offset: -150,
-   easing: 'easeInOutQuad',
-   speed : 600,
-
-});
-}
 
 var begin = new SmoothScroll('.header-btn', {
 	 offset: 0,
@@ -109,15 +17,25 @@ var buyers = new SmoothScroll('a[href*="#buyers"]', {
 
 });
 
+window.onload = function(){
+  let data = sessionStorage.getItem('pageLoad');
+  let btn = sessionStorage.getItem("click");
+  if (data === 'true') {
+    btn === 'start' ? document.querySelector(".header-btn").click() : btn === 'seller' ? document.querySelector(".seller").click() : document.querySelector(".buyer").click()
+    sessionStorage.clear();
+    navBtn.classList.toggle("active")
+    nav.classList.toggle("active")
+  }
+
+}
+
 
 let form = document.getElementById('mc-embedded-subscribe-form');
-let fnameError = document.querySelector('.fname-validation');
-let lnameError = document.querySelector('.fname-validation');
-
 
 
 const validation = new JustValidate('#mc-embedded-subscribe-form', {
-	  	errorFieldCssClass : 'err',errorLabelCssClass : 'err',
+	  	errorFieldCssClass : 'err',
+      errorLabelCssClass : 'err',
 
 });
 
@@ -197,11 +115,13 @@ validation
     },
   ])
   
-  document.querySelector('.formBtn').addEventListener("click", function(){
-  		if (validation.isValid) {
-  				form.submit();
 
-  		}
+
+  document.querySelector('.formBtn').addEventListener("click", function(){
+  validation.onSuccessCallback = () => {
+    form.submit();
+    sessionStorage.setItem("formSubmit", "true");
+  }
 
   })
   form.addEventListener("keypress", function(e){

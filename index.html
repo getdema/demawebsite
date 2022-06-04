@@ -7,22 +7,29 @@
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
   	<link rel="icon" type="image/x-icon" href="assets/images/fav.png">
   	<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
-
 </head>
 <body>
 <header>
-	<a href="#" title="DeMa - Decentralized Marketplace" class="logo">
+	<a href="index.html" title="DeMa - Decentralized Marketplace" class="logo">
 		<img src="assets/images/logo.png" alt="DeMa - Decentralized Marketplace Logo">
 	</a>
-	<nav>
+	<nav >
 		<ul class="nav-links-wrapper">
 			<li>
-				<a href="#seller" class="nav-link">Seller</a>
+				<a href="#seller" class="nav-link seller s-link">Seller</a>
 			</li>
 			<li>
-				<a href="#buyers" class="nav-link">Buyer</a>
+				<a href="#buyers" class="nav-link buyer b-link">Buyer</a>
+			</li>
+			<li>
+				<a href="contact.html" class="nav-link buyer">Contact Us</a>
 			</li>
 		</ul>
+		<div class="burger">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
 	</nav>
 	<div class="call-to-action-btn">
 		<a href="#form" class="header-btn">let's begin</a>
@@ -100,10 +107,8 @@
 		<div class="gsap-decor">
 			<img src="assets/images/shveleri2.webp" class="desktop-d">
 			<img src="assets/images/shveleri.png" class="mobile-d">
-			<h2>For Buyers</h2>
 		</div>
-			<img src="assets/images/herologo.png" class="buyer-logo">
-			<h3 class="buyer-title"> hands you the keys!</h3>
+
 	<section class="buyers-text-wrapper">
 		<article>
 			<img class="img-1" src="assets/images/1.png"/>
@@ -136,7 +141,9 @@
 	<article class="contact-text">
 		<img src="assets/images/f2.png" class="man-sitting">
 		<!-- <h2>with <img src="assets/images/herologo.png" class="c-logo"></h2> -->
-		<h2>finally, REAL Control!</h2>
+			<h2>finally, REAL Control!</h2>
+			<img src="assets/images/herologo.png" class="buyer-logo">
+			<h3 class="buyer-title"> hands you the keys!</h3>
 		<ul>
 			<li>Keep More</li>
 			<li>Own the network</li>
@@ -149,11 +156,11 @@
 			<img src="assets/images/desk.png" class="man-desk">
 		</p>
 	</article>
-	<div class="form-wrapper" id="form">
+	<div class="form-wrapper " id="form">
 		<form class="form" action="https://shop.us17.list-manage.com/subscribe/post?u=26d83d323625f77ff3625c660&amp;id=2ba611a279" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
 			   <input type="hidden" name="u" value="26d83d323625f77ff3625c660">
     		 <input type="hidden" name="id" value="2ba611a279">
-			<div class="input-wrapper">
+			<div class="input-wrapper ">
 				<label class="form-label">
 					First Name *
           <input class="text-input" type="text" name="FNAME" id="mce-FNAME" placeholder="John">
@@ -216,15 +223,45 @@
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_26d83d323625f77ff3625c660_2ba611a279" tabindex="-1" value=""></div>
 			</div>
 			<div class="call-to-action-btn form-btn">
-				<button type="submit" form="mc-embedded-subscribe-form" class="formBtn" >meet with us!</button>
+				<button type="submit"  class="formBtn">meet with us!</button>
 			</div>
 		</form>
 	</div>
 </section>
 <footer>
-	<img src="assets/images/bluelogo.png">
-	<a href="mail:hello@getdema.shop">hello@getdema.shop</a>
-	<span>&copy 2022</span>
+	<section class="dema-f-logo">
+		<div class="f-logo-wrapper">
+			<img src="assets/images/logop1.png" class="p1">
+			<img src="assets/images/herologo.png"class="p2">
+		</div>
+		<p>Own where you buy.</p>
+		<p>Own where you sell.</p>
+	</section>
+	<address class="address-wrapper">
+		<div class="address txt">
+			<img src="assets/images/address.png" alt="">
+			<div>
+				<p>Santa Teresa Blvd #1052</p>
+				<p>7052 San Jose, CA 95139</p>
+			</div>
+		</div>
+		<a href="tel:(408) 641-1827" class="address">
+			<img src="assets/images/phone.png" alt="">
+			(408) 641-1827
+		</a>
+		<a href="mailto:hello@getdema.shop" class="address address-email">
+			<img src="assets/images/email.png" alt="" class="e-img">
+			hello@getdema.shop</a>
+		<img class="card-img" src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=32" alt="Merchant Equipment Store Credit Card Logos"/>
+
+	</address>
+	<section class="policy">
+		<h2>Policies</h2>
+		<a href="policy.html">Privacy</a>
+		<a href="shipping.html">Shipping</a>
+		<a href="returns.html">Returns</a>
+		<a href="terms.html">Terms of Service</a>
+	</section>
 </footer>
 
 <script src="assets/scripts/smooth-scroll.polyfills.min.js"></script>
@@ -233,5 +270,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/general.js"></script>
 </body>
 </html>
